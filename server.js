@@ -14,8 +14,11 @@ wss.on('connection', function connection(ws) {
 
   ws.on('message', function incoming(message) {
     obj = JSON.parse(message);
-    z = obj.d.acc_z;
-    x = obj.d.acc_x;
+    z = obj.d.accelZ;
+    y = obj.d.accelY;
+    x = obj.d.accelX;
+    console.log("x: " + x + " y: " + y + " z: " + z);
+
     wss.clients.forEach(function each(client) {
       if (client !== ws && client.readyState === WebSocket.OPEN) {
         client.send(message);
