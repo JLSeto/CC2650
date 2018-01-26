@@ -17,8 +17,10 @@ var socket = new WebSocket('ws://localhost:8080');
       var chart = new google.visualization.LineChart(
           document.getElementById('visualization'));
       var data = new google.visualization.DataTable();
-      data.addColumn('string', 'x');
+      data.addColumn('string', 't');
+      data.addColumn('number', 'x');
       data.addColumn('number', 'y');
+      data.addColumn('number', 'z');
 
       function drawChart() {
         // Disabling the socket while the chart is drawing.
@@ -41,15 +43,17 @@ var socket = new WebSocket('ws://localhost:8080');
         document.getElementById('y').innerHTML = obj.d.accelY;
         document.getElementById('z').innerHTML = obj.d.accelZ;
 
-       if (data.getNumberOfRows() > 5) {
+       if (data.getNumberOfRows() > 12) {
          data.removeRow(0);  //data.getNumberOfRows()
        }
        // Generating a random x, y pair and inserting it so rows are sorted.
-       var x = add();
+       var t = add();
+       var x = parseFloat(obj.d.accelX);
        var y = parseFloat(obj.d.accelY);
+       var z = parseFloat(obj.d.accelZ);
        var where = data.getNumberOfRows();
        console.log(x);
-       data.insertRows(where, [[x.toString(), y]]);
+       data.insertRows(where, [[t.toString(), x, y, z]]);
        drawChart();
      };
 
