@@ -5,8 +5,8 @@ var socket = new WebSocket('ws://localhost:8080');
 
     function init() {
       var options = {
-        width: 800,
-        height: 480,
+        //width: 800,
+        //height: 480,
         vAxis: {minValue:-4, maxValue:4},
         animation: {
           duration: 200,
