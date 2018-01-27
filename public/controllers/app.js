@@ -1,7 +1,7 @@
 
 google.charts.load('current', {packages: ['corechart', 'bar']});
 google.charts.setOnLoadCallback(init);
-var socket = new WebSocket('ws://localhost:8080');
+var socket = new WebSocket('ws://localhost:8080'); //use public ip address of your server if you want to view from another device. 
 
     function init() {
       var options = {

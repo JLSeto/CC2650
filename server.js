@@ -56,7 +56,7 @@ app.use(settings.httpAdminRoot,RED.httpAdmin);
 // Serve the http nodes UI from /api
 app.use(settings.httpNodeRoot,RED.httpNode);
 
-server.listen(4000);
+server.listen(4400);
 
 // Start the runtime
 RED.start();
